@@ -5,8 +5,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-public class MemoryMemberRepository implements MemberRepository{
+public class MemoryMemberRepository implements MemberRepository {
 
+    /**
+     * 동시성 문제가 고려되지 않음, 실무에서는 항상 ConcurrentHashMap, AtomicLong 사용 고려
+     */
     private static Map<Long, Member> store = new HashMap<>();
     private static Long sequance = 0L;
 

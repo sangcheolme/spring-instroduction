@@ -2,6 +2,8 @@ package hello.springintroduction.service;
 
 import hello.springintroduction.domain.Member;
 import hello.springintroduction.repository.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,6 +12,7 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
+    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
@@ -34,8 +37,6 @@ public class MemberService {
     public Optional<Member> findOne(Long id) {
         return memberRepository.findById(id);
     }
-
-
 
     private void validateDuplicateMember(Member member) {
         memberRepository.findByName(member.getName())
