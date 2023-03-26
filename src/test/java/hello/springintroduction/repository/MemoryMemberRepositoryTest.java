@@ -24,10 +24,10 @@ public class MemoryMemberRepositoryTest {
         member.setName("spring");
 
         //when
-        memberRepository.save(member);
+        Member savedMember = memberRepository.save(member);
 
         //then
-        Member findMember = memberRepository.findById(1L).get();
+        Member findMember = memberRepository.findById(savedMember.getId()).get();
         assertThat(findMember).isEqualTo(member);
     }
 
